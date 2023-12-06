@@ -1899,12 +1899,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mgussekloo/laravel-facet-filter.git",
-                "reference": "72ee116ea2be19ba43f6adcefed07fc9ec67c2ad"
+                "reference": "9058e71a6a7971ef753e36bad6edb0f4df70cddc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mgussekloo/laravel-facet-filter/zipball/72ee116ea2be19ba43f6adcefed07fc9ec67c2ad",
-                "reference": "72ee116ea2be19ba43f6adcefed07fc9ec67c2ad",
+                "url": "https://api.github.com/repos/mgussekloo/laravel-facet-filter/zipball/9058e71a6a7971ef753e36bad6edb0f4df70cddc",
+                "reference": "9058e71a6a7971ef753e36bad6edb0f4df70cddc",
                 "shasum": ""
             },
             "require": {
@@ -1954,7 +1954,7 @@
                 "issues": "https://github.com/mgussekloo/laravel-facet-filter/issues",
                 "source": "https://github.com/mgussekloo/laravel-facet-filter/tree/master"
             },
-            "time": "2023-12-06T12:59:09+00:00"
+            "time": "2023-12-06T14:27:24+00:00"
         },
         {
             "name": "monolog/monolog",
