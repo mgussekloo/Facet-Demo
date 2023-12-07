@@ -11,10 +11,12 @@ class HomeController extends BaseController
 	public function home()
 	{
 		$filter = request()->all();
+
 		$products = Product::facetsMatchFilter($filter)->get();
+		$facets = Product::getFacets();
 
 		return view('welcome', [
-			'facets' => Product::getFacets(),
+			'facets' => $facets,
 			'filter' => $filter,
 			'products' => $products
 		]);
