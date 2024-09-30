@@ -29,7 +29,8 @@
         		<div class="w-3/4">
 		            @foreach ($products as $product)
 		            	<p>
-		            		<h1>{{ $product->name }} ({{ $product->sizes->pluck('name')->join(', ') }})</h1>
+		            		<h1>{{ $product->name }} ({{ $product->sizes->isNotEmpty() ? $product->sizes->pluck('name')->join(', ') : 'n/a' }})</h1>
+		            		€ {{ $product->price }}<br />
 		            		{{ $product->color }}<br /><br />
 		            	</p>
 		            @endforeach

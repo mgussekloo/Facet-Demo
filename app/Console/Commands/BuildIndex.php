@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-use Mgussekloo\FacetFilter\Indexer;
+use App\MyCustomIndexer as Indexer;
 use App\Models\Product;
 
 class BuildIndex extends Command
