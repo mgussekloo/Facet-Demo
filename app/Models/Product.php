@@ -24,8 +24,7 @@ class Product extends Model
 				'fieldname' => 'sizes.name' // Use dot notation to get the value from related models.
 			],
 			[
-				'title' => 'Price',
-				'fieldname' => 'price'
+				'title' => 'Exclusivity',
 			]
 		];
 	}
@@ -33,10 +32,5 @@ class Product extends Model
     public function sizes()
     {
     	return $this->hasMany(Size::class);
-    }
-
-    public function getPriceAttribute()
-    {
-    	return $this->id * 100;
     }
 }
