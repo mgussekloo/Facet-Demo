@@ -4,8 +4,9 @@ This is the demo project for [Laravel Facet Filter](https://github.com/mgusseklo
 Instructions to get started:
 
 - Clone the project
-- Run "composer install"
+- Run: composer install
 - Set up the database credentials in .env
-- Run "php artisan migrate:fresh --seed" to populate the database
-- Run "php artisan app:build-index" to run the indexer
-- Run "php artisan serve" to run a simple webserver and check out the frontend
+- Publish migrations from the Laravel Facet Filter library: php artisan vendor:publish --tag="facet-filter-migrations"
+- Run migrations, seed demo data: php artisan migrate:fresh --seed
+- Build the Facet index: php artisan app:build-index
+- Start a webserver: php artisan serve
