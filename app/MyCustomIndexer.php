@@ -3,22 +3,25 @@
 namespace App;
 
 class MyCustomIndexer extends \Mgussekloo\FacetFilter\Indexer {
+
 	public function buildValues($facet, $model) {
 		$values = parent::buildValues($facet, $model);
 
-		if ($facet->title == 'Exclusivity') {
+		if ($facet->fieldname == 'price') {
 
-			if ($model->id % 3 == 0) {
-				return collect('Not very');
+			if ($model->price > 1000) {
+				return 'Expensive';
 			}
-			if ($model->id % 11 == 0) {
-				return collect('Mildly');
+			if ($model->price > 500) {
+				return '500 - 1000';
 			}
-			if ($model->id % 17 == 0) {
-				return collect('Exclusive');
+			if ($model->price > 250) {
+				return '250 - 500';
 			}
+			return '0 - 250';
 		}
 
 		return $values;
 	}
+
 }
