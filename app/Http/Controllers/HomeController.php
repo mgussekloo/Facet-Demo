@@ -17,7 +17,7 @@ class HomeController extends BaseController
 		$filter = request()->all();
 
 		// use the index (need to build one first)
-		$products = Product::facetFilter($filter)->get();
+		$products = Product::facetFilter($filter)->simplePaginate(15);
 
 		// or, if the dataset is small enough, use the collection filtering
 		// $indexer = new Indexer();

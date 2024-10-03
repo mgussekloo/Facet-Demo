@@ -30,10 +30,12 @@
         			<strong>Filtering took: {{ $time }} s.</strong><br /><br />
 		            @foreach ($products as $product)
 		            	<p>
-		            		<h1>{{ $product->id }}. {{ $product->name }} ({{ $product->sizes->isNotEmpty() ? $product->sizes->pluck('name')->join(', ') : 'n/a' }})</h1>
+		            		<h1>{{ $product->name }} ({{ $product->sizes->isNotEmpty() ? $product->sizes->pluck('name')->join(', ') : 'n/a' }})</h1>
+		            		€ {{ $product->price }}<br />
 		            		{{ $product->color }}<br /><br />
 		            	</p>
 		            @endforeach
+		            {{ $products->appends(request()->input())->links() }}
 		        </div>
 		    </div>
         </div>
