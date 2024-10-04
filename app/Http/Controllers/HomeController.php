@@ -13,11 +13,13 @@ class HomeController extends BaseController
 	{
 
 		$start = microtime(true);
-
 		$filter = request()->all();
+
+		$pagination = null;
 
 		// use the index (need to build one first)
 		$products = Product::facetFilter($filter)->simplePaginate(15);
+		$pagination = $products->appends(request()->input())->links();
 
 		// or, if the dataset is small enough, use the collection filtering
 		// $indexer = new Indexer();
@@ -31,6 +33,7 @@ class HomeController extends BaseController
 			'facets' => $facets,
 			'filter' => $filter,
 			'products' => $products,
+			'pagination' => $pagination,
 			'time' => $time_elapsed_secs
 		]);
 	}

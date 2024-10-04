@@ -35,7 +35,7 @@
 		            		{{ $product->color }}<br /><br />
 		            	</p>
 		            @endforeach
-		            {{ $products->appends(request()->input())->links() }}
+		            {{ $pagination ?? '' }}
 		        </div>
 		    </div>
         </div>
