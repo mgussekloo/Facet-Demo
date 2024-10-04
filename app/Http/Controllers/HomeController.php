@@ -18,12 +18,12 @@ class HomeController extends BaseController
 		$pagination = null;
 
 		// use the index (need to build one first)
-		$products = Product::facetFilter($filter)->simplePaginate(15);
+		$products = Product::with(['sizes'])->facetFilter($filter)->simplePaginate(15);
 		$pagination = $products->appends(request()->input())->links();
 
 		// or, if the dataset is small enough, use the collection filtering
 		// $indexer = new Indexer();
-		// $products = Product::all()->indexlessFacetFilter($filter, $indexer);
+		// $products = Product::with(['sizes'])->get()->indexlessFacetFilter($filter, $indexer);
 
 		$facets = Product::getFacets();
 
