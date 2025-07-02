@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
 
+use Cache;
+
 use App\Models\Product;
-use App\MyCustomIndexer as Indexer;
 
 class HomeController extends BaseController
 {
@@ -18,12 +19,17 @@ class HomeController extends BaseController
 		$pagination = null;
 
 		// use the index (need to build one first)
-		$products = Product::with(['sizes'])->facetFilter($filter)->simplePaginate(15);
-		$pagination = $products->appends(request()->input())->links();
+		$products = Product::with(['sizes'])->facetFilter($filter)->paginate(10);
+		$pagination = $products
+			->appends(request()->input())
+			->links();
 
 		// or, if the dataset is small enough, use the collection filtering
-		// $indexer = new Indexer();
-		// $products = Product::with(['sizes'])->get()->indexlessFacetFilter($filter, $indexer);
+		// $products = Cache::remember('products', 3600, function() {
+		// 	return Product::with(['sizes'])->get();
+		// });
+
+		// $products = $products->indexlessFacetFilter($filter, \App\MyCustomIndexer::class);
 
 		$facets = Product::getFacets();
 
