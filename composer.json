@@ -22,13 +22,6 @@
         "phpunit/phpunit": "^10.1",
         "spatie/laravel-ignition": "^2.0"
     },
-	"repositories": [
-        {
-            "type": "path",
-            "url": "../laravel-facet-filter",
-            "packagist.org": false
-        }
-    ],
     "autoload": {
         "psr-4": {
             "App\\": "app/",
