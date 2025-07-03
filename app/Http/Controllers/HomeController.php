@@ -18,17 +18,15 @@ class HomeController extends BaseController
 
 		$pagination = null;
 
-		// use the index (need to build one first)
+
+		/* use the index (need to build one first) */
 		$products = Product::with(['sizes'])->facetFilter($filter)->paginate(10);
 		$pagination = $products
 			->appends(request()->input())
 			->links();
 
-		// or, if the dataset is small enough, use the collection filtering
-		// $products = Cache::remember('products', 3600, function() {
-		// 	return Product::with(['sizes'])->get();
-		// });
-
+		// /* or, if the dataset is small enough, use the collection filtering */
+		// $products = Product::with(['sizes'])->get();
 		// $products = $products->indexlessFacetFilter($filter, \App\MyCustomIndexer::class);
 
 		$facets = Product::getFacets();
