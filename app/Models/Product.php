@@ -32,7 +32,7 @@ class Product extends Model
 		];
 	}
 
-	public static function indexer()
+	public static function indexerClass()
 	{
 		return Indexer::class;
 	}
