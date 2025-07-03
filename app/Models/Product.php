@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Mgussekloo\FacetFilter\Traits\Facettable;
 
+use App\MyCustomIndexer as Indexer;
+
 class Product extends Model
 {
     use HasFactory;
@@ -28,6 +30,11 @@ class Product extends Model
 				'fieldname' => 'price'
 			]
 		];
+	}
+
+	public static function indexer()
+	{
+		return Indexer::class;
 	}
 
     public function sizes()

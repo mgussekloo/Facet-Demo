@@ -16,7 +16,7 @@
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
         	<div class="flex">
         		<div class="w-1/4 flex-none">
-        			@foreach ($facets as $facet)
+        			@foreach ($products->getFacets() as $facet)
         				<p>
         					<h3>{{ $facet->title }}</h3>
 

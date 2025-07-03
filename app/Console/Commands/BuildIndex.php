@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-use App\MyCustomIndexer as Indexer;
 use App\Models\Product;
 
 class BuildIndex extends Command
@@ -29,9 +28,6 @@ class BuildIndex extends Command
     public function handle()
     {
 		$products = Product::with(['sizes'])->get(); // get some products
-
-		$indexer = new Indexer();
-		$indexer->resetIndex(); // clears the index
-		$indexer->buildIndex($products); // process the models
+		$products->buildIndex();
     }
 }
