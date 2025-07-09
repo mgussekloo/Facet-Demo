@@ -16,7 +16,7 @@
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
         	<div class="flex">
         		<div class="w-1/4 flex-none">
-        			@foreach ($products->getFacets() as $facet)
+        			@foreach ($facets as $facet)
         				<p>
         					<h3>{{ $facet->title }}</h3>
 
@@ -30,9 +30,15 @@
         			<strong>Filtering took: {{ $time }} s.</strong><br /><br />
 		            @foreach ($products as $product)
 		            	<p>
-		            		<h1>{{ $product->name }} ({{ $product->sizes->isNotEmpty() ? $product->sizes->pluck('name')->join(', ') : 'n/a' }})</h1>
+		            		<h1>
+		            			@if (!$product->published)<s>@endif
+		            			{{ $product->name }}
+		            			@if (!$product->published)</s>@endif
+		            			({{ $product->sizes->isNotEmpty() ? $product->sizes->pluck('name')->join(', ') : 'n/a' }})
+		            		</h1>
 		            		€ {{ $product->price }}<br />
-		            		{{ $product->color }}<br /><br />
+		            		{{ $product->color }}<br />
+		            		<br />
 		            	</p>
 		            @endforeach
 

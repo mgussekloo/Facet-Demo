@@ -7,6 +7,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Cache;
 
 use App\Models\Product;
+use Mgussekloo\Facades\FacetFilter;
 
 class HomeController extends BaseController
 {
@@ -19,7 +20,7 @@ class HomeController extends BaseController
 		$pagination = null;
 
 		/* use the index (need to build one first) */
-		$products = Product::with(['sizes'])->facetFilter($filter)->paginate(10);
+		$products = Product::with(['sizes'])->facetFilter($filter)->paginate(100);
 		$pagination = $products->appends(request()->input())->links();
 
 		// /* or, if the dataset is small enough, use the collection filtering */
@@ -32,7 +33,8 @@ class HomeController extends BaseController
 		return view('welcome', [
 			'products' => $products,
 			'pagination' => $pagination,
-			'time' => $time_elapsed_secs
+			'time' => $time_elapsed_secs,
+			'facets' => Product::getFacets()
 		]);
 	}
 }

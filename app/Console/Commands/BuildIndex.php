@@ -27,7 +27,10 @@ class BuildIndex extends Command
      */
     public function handle()
     {
-		$products = Product::with(['sizes'])->get(); // get some products
-		$products->buildIndex();
+    	Product::indexer()->resetIndex();
+
+		Product::chunkById(1000, function($products) {
+			$products->load('sizes')->buildIndex();
+		});
     }
 }

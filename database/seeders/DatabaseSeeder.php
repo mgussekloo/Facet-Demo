@@ -16,11 +16,12 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-	    Product::factory()->count(1000)
+	    Product::factory()->count(10000)
 	    ->sequence(function($sequence) {
 	    	return [
 				'name' => implode(' ', fake()->words(2)),
             	'color' => fake()->safeColorName(),
+            	'published' => fake()->boolean()
 	    	];
 	    })
 	    ->afterCreating(function($product) {

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Mgussekloo\FacetFilter\Traits\Facettable;
 
-use App\MyCustomIndexer as Indexer;
+use App\MyCustomIndexer;
 
 class Product extends Model
 {
@@ -17,6 +17,10 @@ class Product extends Model
 	{
 		// Return an array of definitions
 		return [
+			[
+				'title' => 'Published',
+				'fieldname' => 'published'
+			],
 			[
 				'title' => 'Main color', // The title will be used for the parameter.
 				'fieldname' => 'color' // Model property from which to get the values.
@@ -32,9 +36,9 @@ class Product extends Model
 		];
 	}
 
-	public static function indexerClass()
+	public static function indexer()
 	{
-		return Indexer::class;
+		return new MyCustomIndexer();
 	}
 
     public function sizes()
