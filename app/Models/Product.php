@@ -17,10 +17,10 @@ class Product extends Model
 	{
 		// Return an array of definitions
 		return [
-			[
-				'title' => 'Published',
-				'fieldname' => 'published'
-			],
+			// [
+			// 	'title' => 'Published',
+			// 	'fieldname' => 'published'
+			// ],
 			[
 				'title' => 'Main color', // The title will be used for the parameter.
 				'fieldname' => 'color' // Model property from which to get the values.

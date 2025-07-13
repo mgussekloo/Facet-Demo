@@ -7,11 +7,11 @@ class MyCustomIndexer extends \Mgussekloo\FacetFilter\Indexer {
 	public function buildValues($facet, $model) {
 		$values = parent::buildValues($facet, $model);
 
-		if ($facet->fieldname == 'published') {
-			$values = array_map(function($value) {
-				return $value ? 'Yes' : 'No';
-			}, $values);
-		}
+		// if ($facet->fieldname == 'published') {
+		// 	$values = array_map(function($value) {
+		// 		return $value ? 'Yes' : 'No';
+		// 	}, $values);
+		// }
 
 		if ($facet->fieldname == 'price') {
 
